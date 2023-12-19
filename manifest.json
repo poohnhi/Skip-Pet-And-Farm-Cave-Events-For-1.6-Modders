@@ -1,0 +1,12 @@
+{
+    "$schema": "https://smapi.io/schemas/manifest.json",
+    "Name": "Skip Pet And Farm Cave Events For 1.6 Modders",
+    "Author": "Pooh",
+    "Version": "1.0.1",
+    "Description": "No more unwanted, unskippable Marnie and Demetrius visits. That means your farm cave will always be empty... with the downside of no cats or dogs.",
+    "UniqueID": "poohnhi.SkipPetAndFarmCaveEvents",
+    "UpdateKeys": ["GitHub:poohnhi/Skip-Pet-And-Farm-Cave-Events-For-1.6-Modders"],
+    "ContentPackFor": {
+        "UniqueID": "Pathoschild.ContentPatcher"
+    }
+}
