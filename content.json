@@ -10,7 +10,7 @@
                     "Id": "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPet",
                     "Trigger": "LocationChanged",
                     "Location": "Farm",
-                    "Condition": "!PLAYER_HAS_SEEN_EVENT Any 1590166, !PLAYER_HAS_SEEN_EVENT Any 897405, !PLAYER_HAS_FLAG Any rejectedPet",
+                    "Condition": "!PLAYER_HAS_SEEN_EVENT Any 1590166, !PLAYER_HAS_SEEN_EVENT Any 897405, !PLAYER_HAS_MAIL Any rejectedPet",
                     "Actions": [
                         "AddMail Current rejectedPet received",
                     ]
