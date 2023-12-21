@@ -1,6 +1,15 @@
 {
-    "$schema": "https://smapi.io/schemas/content-patcher.json",
-    "Format": "1.29.0",
+    "Format": "1.30.0",
+    "ConfigSchema": {
+        "AlwaysSkipPet": {
+            "AllowValues": "on, off",
+            "Default": "on"
+        },
+        "AlwaysSkipFarmCave": {
+            "AllowValues": "on, off",
+            "Default": "on"
+        }
+    },
     "Changes": [
         {
             "Action": "EditData",
@@ -8,22 +17,70 @@
             "Entries": {
                 "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPet": {
                     "Id": "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPet",
-                    "Trigger": "DayStarted",
-                    "Location": "Farm",
+                    "Trigger": "LocationChanged",
                     "Condition": "!PLAYER_HAS_SEEN_EVENT Any 1590166, !PLAYER_HAS_SEEN_EVENT Any 897405, !PLAYER_HAS_MAIL Any rejectedPet",
                     "Actions": [
                         "AddMail Current rejectedPet received",
+                        "AddMail Current poohnhi.SkipPetAndFarmCaveEvents_PetSkipped received"
                     ]
-                },
+                }
+            },
+            "When": {
+                "AlwaysSkipPet": "on"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/TriggerActions",
+            "Entries": {
                 "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerFarmCave": {
                     "Id": "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerFarmCave",
-                    "Trigger": "DayStarted",
-                    "Location": "Farm",
+                    "Trigger": "LocationChanged",
                     "Condition": "!PLAYER_HAS_SEEN_EVENT Any 65",
                     "Actions": [
                         "MarkEventSeen All 65 true",
+                        "AddMail Current poohnhi.SkipPetAndFarmCaveEvents_FarmCaveSkipped received"
                     ]
                 }
+            },
+            "When": {
+                "AlwaysSkipFarmCave": "on"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/TriggerActions",
+            "Entries": {
+                "poohnhi.SkipPetAndFarmCaveEvents_AllowPetAgain": {
+                    "Id": "poohnhi.SkipPetAndFarmCaveEvents_AllowPetAgain",
+                    "Trigger": "LocationChanged",
+                    "Condition": "PLAYER_HAS_MAIL Any rejectedPet, PLAYER_HAS_MAIL Any poohnhi.SkipPetAndFarmCaveEvents_PetSkipped",
+                    "Actions": [
+                        "RemoveMail Current rejectedPet all",
+                        "RemoveMail Current poohnhi.SkipPetAndFarmCaveEvents_PetSkipped all"
+                    ]
+                }
+            },
+            "When": {
+                "AlwaysSkipPet": "off"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/TriggerActions",
+            "Entries": {
+                "poohnhi.SkipPetAndFarmCaveEvents_AllowFarmCaveAgain": {
+                    "Id": "poohnhi.SkipPetAndFarmCaveEvents_AllowFarmCaveAgain",
+                    "Trigger": "LocationChanged",
+                    "Condition": "PLAYER_HAS_SEEN_EVENT Any 65, PLAYER_HAS_MAIL Any poohnhi.SkipPetAndFarmCaveEvents_FarmCaveSkipped",
+                    "Actions": [
+                        "MarkEventSeen All 65 false",
+                        "RemoveMail Current poohnhi.SkipPetAndFarmCaveEvents_FarmCaveSkipped all"
+                    ]
+                }
+            },
+            "When": {
+                "AlwaysSkipFarmCave": "off"
             }
         }
     ]

@@ -1,0 +1,10 @@
+{
+    "config.AlwaysSkipPet.name": "Always Skip Pet Adoption Event",
+    "config.AlwaysSkipPet.description": "Turn this ON if you need to always skip Marnie's pet event. Turn this OFF after event is skipped by this mod will let the event trigger again.",
+    "config.AlwaysSkipPet.values.on": "On",
+    "config.AlwaysSkipPet.values.off": "Off",
+    "config.AlwaysSkipFarmCave.name": "Always Skip Farm Cave Event",
+    "config.AlwaysSkipFarmCave.description": "Turn this ON if you need to always skip Demetrius's farm cave event. Turn this OFF after event is skipped by this mod will let the event trigger again.",
+    "config.AlwaysSkipFarmCave.values.on": "On",
+    "config.AlwaysSkipFarmCave.values.off": "Off"
+}
