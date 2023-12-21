@@ -8,7 +8,7 @@
             "Entries": {
                 "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPet": {
                     "Id": "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPet",
-                    "Trigger": "LocationChanged",
+                    "Trigger": "DayStarted",
                     "Location": "Farm",
                     "Condition": "!PLAYER_HAS_SEEN_EVENT Any 1590166, !PLAYER_HAS_SEEN_EVENT Any 897405, !PLAYER_HAS_MAIL Any rejectedPet",
                     "Actions": [
@@ -17,7 +17,7 @@
                 },
                 "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerFarmCave": {
                     "Id": "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerFarmCave",
-                    "Trigger": "LocationChanged",
+                    "Trigger": "DayStarted",
                     "Location": "Farm",
                     "Condition": "!PLAYER_HAS_SEEN_EVENT Any 65",
                     "Actions": [
