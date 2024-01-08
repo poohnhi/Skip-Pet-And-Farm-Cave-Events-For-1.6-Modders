@@ -16,26 +16,26 @@
             "Action": "EditData",
             "Target": "Data/TriggerActions",
             "Entries": {
-                "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPetLoop": {
-                    "Id": "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPetLoop",
+                "poohnhi.SkipPetAndFarmCaveEvents_LoopSkipTriggerPetLoop": {
+                    "Id": "poohnhi.SkipPetAndFarmCaveEvents_LoopSkipTriggerPetLoop",
                     "Trigger": "DayStarted LocationChanged DayEnding",
                     "Actions": [
-                        "MarkActionApplied Current poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPet false"
+                        "MarkActionApplied Current poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPetLoop false"
                     ]
-                }
-            },
-            "When": {
-                "AlwaysSkipPet": "on"
-            }
-        },
-        {
-            "Action": "EditData",
-            "Target": "Data/TriggerActions",
-            "Entries": {
+                },
+                "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPetLoop": {
+                    "Id": "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPetLoop",
+                    "Condition": "!PLAYER_HAS_MAIL Any poohnhi.SkipPetAndFarmCaveEvents_PetSkipped",
+                    "Trigger": "DayStarted LocationChanged DayEnding",
+                    "Actions": [
+                        "MarkActionApplied Current poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPet false",
+                        "MarkActionApplied Current poohnhi.SkipPetAndFarmCaveEvents_LoopSkipTriggerPetLoop false"
+                    ]
+                },
                 "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPet": {
                     "Id": "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPet",
                     "Trigger": "DayStarted LocationChanged DayEnding",
-                    "Condition": "!PLAYER_HAS_SEEN_EVENT Any 1590166, !PLAYER_HAS_SEEN_EVENT Any 897405",
+                    "Condition": "!PLAYER_HAS_SEEN_EVENT Any 1590166, !PLAYER_HAS_SEEN_EVENT Any 897405, !PLAYER_HAS_MAIL Any rejectedPet",
                     "Actions": [
                         "MarkEventSeen Current 1590166 true",
                         "MarkEventSeen Current 897405 true",
@@ -46,12 +46,29 @@
             },
             "When": {
                 "AlwaysSkipPet": "on"
-            }
+            },
+            "Update": "OnLocationChange, OnTimeChange"
         },
         {
             "Action": "EditData",
             "Target": "Data/TriggerActions",
             "Entries": {
+                "poohnhi.SkipPetAndFarmCaveEvents_LoopSkipTriggerFarmCaveLoop": {
+                    "Id": "poohnhi.SkipPetAndFarmCaveEvents_LoopSkipTriggerFarmCaveLoop",
+                    "Trigger": "DayStarted LocationChanged DayEnding",
+                    "Actions": [
+                        "MarkActionApplied Current poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerFarmCaveLoop false"
+                    ]
+                },
+                "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerFarmCaveLoop": {
+                    "Id": "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerFarmCaveLoop",
+                    "Condition": "!PLAYER_HAS_MAIL Any poohnhi.SkipPetAndFarmCaveEvents_FarmCaveSkipped",
+                    "Trigger": "DayStarted LocationChanged DayEnding",
+                    "Actions": [
+                        "MarkActionApplied Current poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerFarmCave false",
+                        "MarkActionApplied Current poohnhi.SkipPetAndFarmCaveEvents_LoopSkipTriggerFarmCaveLoop false"
+                    ]
+                },
                 "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerFarmCave": {
                     "Id": "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerFarmCave",
                     "Trigger": "DayStarted LocationChanged DayEnding",
@@ -64,12 +81,30 @@
             },
             "When": {
                 "AlwaysSkipFarmCave": "on"
-            }
+            },
+            "Update": "OnLocationChange, OnTimeChange"
         },
         {
             "Action": "EditData",
             "Target": "Data/TriggerActions",
             "Entries": {
+                "poohnhi.SkipPetAndFarmCaveEvents_LoopAllowPetAgainLoop": {
+                    "Id": "poohnhi.SkipPetAndFarmCaveEvents_LoopAllowPetAgainLoop",
+                    "Trigger": "DayStarted LocationChanged DayEnding",
+                    "Condition": "PLAYER_HAS_MAIL Any poohnhi.SkipPetAndFarmCaveEvents_PetSkipped",
+                    "Actions": [
+                        "MarkActionApplied Current poohnhi.SkipPetAndFarmCaveEvents_AllowPetAgainLoop false"
+                    ]
+                },
+                "poohnhi.SkipPetAndFarmCaveEvents_AllowPetAgainLoop": {
+                    "Id": "poohnhi.SkipPetAndFarmCaveEvents_AllowPetAgainLoop",
+                    "Trigger": "DayStarted LocationChanged DayEnding",
+                    "Condition": "PLAYER_HAS_MAIL Any poohnhi.SkipPetAndFarmCaveEvents_PetSkipped",
+                    "Actions": [
+                        "MarkActionApplied Current poohnhi.SkipPetAndFarmCaveEvents_LoopAllowPetAgainLoop false",
+                        "MarkActionApplied Current poohnhi.SkipPetAndFarmCaveEvents_AllowPetAgain false"
+                    ]
+                },
                 "poohnhi.SkipPetAndFarmCaveEvents_AllowPetAgain": {
                     "Id": "poohnhi.SkipPetAndFarmCaveEvents_AllowPetAgain",
                     "Trigger": "DayStarted LocationChanged DayEnding",
@@ -84,12 +119,30 @@
             },
             "When": {
                 "AlwaysSkipPet": "off"
-            }
+            },
+            "Update": "OnLocationChange, OnTimeChange"
         },
         {
             "Action": "EditData",
             "Target": "Data/TriggerActions",
             "Entries": {
+                "poohnhi.SkipPetAndFarmCaveEvents_LoopAllowFarmCaveAgainLoop": {
+                    "Id": "poohnhi.SkipPetAndFarmCaveEvents_LoopAllowFarmCaveAgainLoop",
+                    "Trigger": "DayStarted LocationChanged DayEnding",
+                    "Condition": "PLAYER_HAS_MAIL Any poohnhi.SkipPetAndFarmCaveEvents_PetSkipped",
+                    "Actions": [
+                        "MarkActionApplied Current poohnhi.SkipPetAndFarmCaveEvents_AllowFarmCaveAgainLoop false"
+                    ]
+                },
+                "poohnhi.SkipPetAndFarmCaveEvents_AllowFarmCaveAgainLoop": {
+                    "Id": "poohnhi.SkipPetAndFarmCaveEvents_AllowFarmCaveAgainLoop",
+                    "Trigger": "DayStarted LocationChanged DayEnding",
+                    "Condition": "PLAYER_HAS_MAIL Any poohnhi.SkipPetAndFarmCaveEvents_PetSkipped",
+                    "Actions": [
+                        "MarkActionApplied Current poohnhi.SkipPetAndFarmCaveEvents_LoopAllowFarmCaveAgainLoop false",
+                        "MarkActionApplied Current poohnhi.SkipPetAndFarmCaveEvents_AllowFarmCaveAgain false"
+                    ]
+                },
                 "poohnhi.SkipPetAndFarmCaveEvents_AllowFarmCaveAgain": {
                     "Id": "poohnhi.SkipPetAndFarmCaveEvents_AllowFarmCaveAgain",
                     "Trigger": "DayStarted LocationChanged DayEnding",
@@ -102,7 +155,8 @@
             },
             "When": {
                 "AlwaysSkipFarmCave": "off"
-            }
+            },
+            "Update": "OnLocationChange, OnTimeChange"
         }
     ]
 }
