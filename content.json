@@ -10,16 +10,35 @@
             "Default": "on"
         }
     },
+
     "Changes": [
+        {
+            "Action": "EditData",
+            "Target": "Data/TriggerActions",
+            "Entries": {
+                "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPetLoop": {
+                    "Id": "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPetLoop",
+                    "Trigger": "DayStarted LocationChanged DayEnding",
+                    "Actions": [
+                        "MarkActionApplied Current poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPet false"
+                    ]
+                }
+            },
+            "When": {
+                "AlwaysSkipPet": "on"
+            }
+        },
         {
             "Action": "EditData",
             "Target": "Data/TriggerActions",
             "Entries": {
                 "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPet": {
                     "Id": "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPet",
-                    "Trigger": "LocationChanged",
-                    "Condition": "!PLAYER_HAS_SEEN_EVENT Any 1590166, !PLAYER_HAS_SEEN_EVENT Any 897405, !PLAYER_HAS_MAIL Any rejectedPet",
+                    "Trigger": "DayStarted LocationChanged DayEnding",
+                    "Condition": "!PLAYER_HAS_SEEN_EVENT Any 1590166, !PLAYER_HAS_SEEN_EVENT Any 897405",
                     "Actions": [
+                        "MarkEventSeen Current 1590166 true",
+                        "MarkEventSeen Current 897405 true",
                         "AddMail Current rejectedPet received",
                         "AddMail Current poohnhi.SkipPetAndFarmCaveEvents_PetSkipped received"
                     ]
@@ -35,7 +54,7 @@
             "Entries": {
                 "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerFarmCave": {
                     "Id": "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerFarmCave",
-                    "Trigger": "LocationChanged",
+                    "Trigger": "DayStarted LocationChanged DayEnding",
                     "Condition": "!PLAYER_HAS_SEEN_EVENT Any 65",
                     "Actions": [
                         "MarkEventSeen All 65 true",
@@ -53,9 +72,11 @@
             "Entries": {
                 "poohnhi.SkipPetAndFarmCaveEvents_AllowPetAgain": {
                     "Id": "poohnhi.SkipPetAndFarmCaveEvents_AllowPetAgain",
-                    "Trigger": "LocationChanged",
+                    "Trigger": "DayStarted LocationChanged DayEnding",
                     "Condition": "PLAYER_HAS_MAIL Any rejectedPet, PLAYER_HAS_MAIL Any poohnhi.SkipPetAndFarmCaveEvents_PetSkipped",
                     "Actions": [
+                        "MarkEventSeen Current 1590166 false",
+                        "MarkEventSeen Current 897405 false",
                         "RemoveMail Current rejectedPet all",
                         "RemoveMail Current poohnhi.SkipPetAndFarmCaveEvents_PetSkipped all"
                     ]
@@ -71,7 +92,7 @@
             "Entries": {
                 "poohnhi.SkipPetAndFarmCaveEvents_AllowFarmCaveAgain": {
                     "Id": "poohnhi.SkipPetAndFarmCaveEvents_AllowFarmCaveAgain",
-                    "Trigger": "LocationChanged",
+                    "Trigger": "DayStarted LocationChanged DayEnding",
                     "Condition": "PLAYER_HAS_SEEN_EVENT Any 65, PLAYER_HAS_MAIL Any poohnhi.SkipPetAndFarmCaveEvents_FarmCaveSkipped",
                     "Actions": [
                         "MarkEventSeen All 65 false",
