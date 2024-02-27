@@ -1,7 +1,7 @@
 {
     "Name": "Skip Pet And Farm Cave Events For 1.6",
     "Author": "Pooh",
-    "Version": "1.0.5",
+    "Version": "1.0.6",
     "Description": "No more unwanted, unskippable Marnie and Demetrius visits. Your farm cave will always be empty... with the downside of no cats or dogs.",
     "UniqueID": "poohnhi.SkipPetAndFarmCaveEvents",
     "UpdateKeys": ["Nexus:19575", "GitHub:poohnhi/SkipPetAndFarmCaveEvents"],
