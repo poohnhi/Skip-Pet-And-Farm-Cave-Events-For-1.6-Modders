@@ -2,13 +2,33 @@
     "Format": "2.0.0",
     "ConfigSchema": {
         "AlwaysSkipPet": {
-            "AllowValues": "on, off",
-            "Default": "on"
+            "AllowValues": "true, false",
+            "Default": "true"
         },
         "AlwaysSkipFarmCave": {
-            "AllowValues": "on, off",
-            "Default": "on"
-        }
+            "AllowValues": "true, false",
+            "Default": "true"
+        },
+        "AlwaysSkipQiPlane": {
+            "AllowValues": "true, false",
+            "Default": "true"
+        },
+        "AlwaysSkipSpecialOrderBoard": {
+            "AllowValues": "true, false",
+            "Default": "true"
+        },
+        "AlwaysSkipPierreYear2": {
+            "AllowValues": "true, false",
+            "Default": "true"
+        },
+        "AlwaysSkipWinterKrobus": {
+            "AllowValues": "true, false",
+            "Default": "true"
+        },
+        "AlwaysSkipKentIntroduction": {
+            "AllowValues": "true, false",
+            "Default": "true"
+        },
     },
 
     "Changes": [
@@ -16,13 +36,6 @@
             "Action": "EditData",
             "Target": "Data/TriggerActions",
             "Entries": {
-                "poohnhi.SkipPetAndFarmCaveEvents_LoopSkipTriggerPetLoop": {
-                    "Id": "poohnhi.SkipPetAndFarmCaveEvents_LoopSkipTriggerPetLoop",
-                    "Trigger": "DayStarted LocationChanged DayEnding",
-                    "Actions": [
-                        "MarkActionApplied Current poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPetLoop false"
-                    ]
-                },
                 "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPetLoop": {
                     "Id": "poohnhi.SkipPetAndFarmCaveEvents_SkipTriggerPetLoop",
                     "Condition": "!PLAYER_HAS_MAIL Any poohnhi.SkipPetAndFarmCaveEvents_PetSkipped",
